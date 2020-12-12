@@ -59,8 +59,15 @@ preds <- as.data.frame(predict(final.mod, new = pred, interval = "confidence"))
 library("httr")
 library("jsonlite")
 
-anime <- httr::GET("https://anilistmikilior1v1.p.rapidapi.com/getAnimeList")
-animeInfo <- jsonlite::fromJSON(content(anime, "text"), simplifyVector = FALSE)
+
+baldwin <- httr::GET('http://openlibrary.org/search.json?author=baldwin')
+baldInfo <- jsonlite::fromJSON(content(baldwin, "text"), simplifyVector = FALSE)
+
+baldDate <- baldInfo$docs
+dats <- sapply(baldDate[], function(x){unlist(unique(x$publish_year))})
+dats <- do.call(c, dats)
+dat.hist <- hist(dats)
+
 
 ```
 
