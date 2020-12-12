@@ -115,20 +115,9 @@ vecFunc <- function(vector, remove) {
 
 
 
-
-
-
 ### Choose a software license that is one you would feel comfortable using and defend it's use over other licenses (5 pts)
 
-
-
-
-
-
-
-
-
-
+Well, it depends on what the project or thing I would be licensing was, but in general if it's something I want to be reproducible I would use the Apache License. It's hard for me to defend it's use over others, because I'm not very familiar with different licenses, but the pros to using this license are that it's a permissive license that easily allows collaboration. You can use it commercially, modify, distribute and use privately, but cannot hold the author liable or use as trademark. So, you can rest assured that everyone will be able to use your work for most purposes without having to worry about any negative consequences. Even so, the user must include their own copyright, license, and changes when using your work, offering further protections to the author.
 
 
 ### Which of the following softwares are you likely to use in the future? (0 pts)
@@ -144,18 +133,16 @@ vecFunc <- function(vector, remove) {
 + a Linux OS
 + bash shell
 
-
-
-
+I am definitely going to use R (already do) and continue using R markdown, git, tidyverse, and the bash shell. Unfortunately, I will probably not use Docker, LaTeX, SQL, or parallel computing packages in the future because I don't feel like I learned enough to be able to use those things on my own.
 
 
 
 ### What did you enjoy most about the course?
 
-
+What I enjoyed most about the course, was the variety of material covered and honestly, being introduced to git and version control in general. It's life-changing.
 
 
 ### What could be improved for future iterations (especially as it will be geared more exclusively towards undergraduates in the future)?
 
-
+For future iterations of this course the number 1 (and 2) things I would recommend is to cut the discussion period and focus more on teaching the material to the students and HELP when people are struggling. 
 
