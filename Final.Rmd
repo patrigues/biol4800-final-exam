@@ -11,17 +11,7 @@ output: pdf_document
 
 ### What does it mean to do reproducible research? Why is reproducibility important to the process of science? (5 pts)
 
-
-
-
-
-
-
-
-
-
-
-
+Reproducibility is the ability to obtain the same results using the same data. Reproducible research allows other researchers to reproduce a study by providing data, code, methods, analysis, operating system, etc., essentially everything needed to replicate a study. It's an important process because it allows us to not only validate the credibility and results of a study, but also to build on the knowledge from that study without having to start from scratch. Science is continually building on itself, so having open and transparent science is crucial to the integrity of the research.
 
 
 
@@ -97,12 +87,7 @@ for(i in 1:nrow(cardLocs)) {
 }
 cardDists
 
-
-
 ```
-
-
-
 
 
 
@@ -111,6 +96,21 @@ cardDists
 
 
 ```{r}
+
+vec <- c(1:10)
+vec2 <- c(1, 2, 3, NA, 5, 10)
+vec3 <- c(1, 2, 3, "poop", 5, 6)
+## arguments, vector and which element of the vector to be removed
+vecFunc <- function(vector, remove) {
+  if(!is.numeric(vector)) {
+    warning("vector must be numeric")
+  }
+  temp <- vec[-remove]
+  out <- c(mean(temp, na.rm = TRUE), sd(temp, na.rm = TRUE))
+  
+  return(out)
+}
+  
 ```
 
 
