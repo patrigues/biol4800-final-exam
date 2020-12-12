@@ -66,16 +66,13 @@ preds <- as.data.frame(predict(final.mod, new = pred, interval = "confidence"))
 (See https://rapidapi.com/blog/most-popular-api/ for a list of APIs)
 
 ```{r}
+library("httr")
+library("jsonlite")
+
+anime <- httr::GET("https://anilistmikilior1v1.p.rapidapi.com/getAnimeList")
+animeInfo <- jsonlite::fromJSON(content(anime, "text"), simplifyVector = FALSE)
+
 ```
-
-
-
-
-
-
-
-
-
 
 
 
@@ -84,19 +81,25 @@ preds <- as.data.frame(predict(final.mod, new = pred, interval = "confidence"))
 
 
 ```{r}
+install.packages(c("rgbif", "geosphere", "dplyr"))
+library(rgbif)
+library(geosphere)
+library(dplyr)
+
+cardinal <- rgbif::occ_search(scientificName = 'Cardinalis cardinalis', limit = 10, return = 'data')[[3]]
+
+
+# calculate distance
+cardLocs <- select(cardinal, decimalLatitude, decimalLongitude)
+cardDists <- array()
+for(i in 1:nrow(cardLocs)) {
+  dist[i] <- distm(c(cardLocs$decimalLongitude[i], cardLocs$decimalLatitude[i]), c(cardLocs$decimalLongitude[i + 1], cardLocs$decimalLatitude[i + 1]), fun = distHaversine)
+}
+cardDists
+
+
+
 ```
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -115,34 +118,7 @@ preds <- as.data.frame(predict(final.mod, new = pred, interval = "confidence"))
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ### Choose a software license that is one you would feel comfortable using and defend it's use over other licenses (5 pts)
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -179,20 +155,7 @@ preds <- as.data.frame(predict(final.mod, new = pred, interval = "confidence"))
 
 
 
-
-
-
-
-
-
-
-
 ### What could be improved for future iterations (especially as it will be geared more exclusively towards undergraduates in the future)?
-
-
-
-
-
 
 
 
