@@ -1,0 +1,217 @@
+---
+title: "Final Exam"
+author: "Patricia Rodrigues"
+date: 12/12/2020
+output: pdf_document
+---
+
+
+
+
+
+### What does it mean to do reproducible research? Why is reproducibility important to the process of science? (5 pts)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+###  Using the data on red wine quality, develop a predictive model of red wine quality. Format the model in a way that it works well with the `predict` function in `R`. You will be assessed on the model structure mostly, but 5 of the 10 points will be on if the model can outperform a naive baseline (10 pts)
+
+
+
+```{r}
+setwd("/biol4800-final-exam")
+dat <- read.csv('redWineTrain.csv', header = TRUE, row.names = 1)
+var.sel <- lm(quality ~ density + residual.sugar + citric.acid + alcohol + total.sulfur.dioxide + volatile.acidity + free.sulfur.dioxide + sulphates + pH + chlorides + fixed.acidity, data = dat)
+mod1 <- lm(quality ~ alcohol + volatile.acidity + sulphates + chlorides, data = dat)
+mod2 <- lm(quality ~ alcohol + volatile.acidity + sulphates, data = dat)
+mod3 <- lm(quality ~ alcohol + volatile.acidity, data = dat)
+mod4 <- lm(quality ~ alcohol, data = dat)
+
+## Created 4 models based on most significant variables, final model had highest adjusted r-squared and lowest p-value with fewest variables
+final.mod <- mod2
+## look at model summary
+summary(mod2)
+## look at QQ plots
+ layout(matrix(1:4, ncol=2)) 
+ par(mar=c(4,4,0.5,0.5)) 
+ plot(final.mod)
+ ## residuals roughly centered around zero
+ hist(final.mod$residuals)
+## see how well model predicts data
+qual <-  rep(seq(4,10, by = 1), 2)
+alc <- seq(7.5, 14, by = 0.5) 
+vol <- seq(0.2, 1.5, by = 0.1)
+sulf <- seq(0.5, 2, by = 0.11)
+
+pred <- expand.grid(quality = qual, alcohol = alc, volatile.acidity = vol, sulphates = sulf)[1:1279,]
+#preds <- as.data.frame(predict(final.mod, new = pred, interval = "confidence"))
+## plot residuals
+vres <- data.frame(dat$quality, pred, residuals = dat$quality - pred)
+head(vres)
+plot(vres$quality ~ vres$residuals.quality)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### Pull data from an API of your choice (not Open Library), manipulate it in any way you choose, and create the most interesting and clear figure you can. (15 pts)
+
+(See https://rapidapi.com/blog/most-popular-api/ for a list of APIs)
+
+```{r}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+### Use the R package `rgbif` to obtain occurrence data for a species of your choosing. Calculate the spatial distance between all occurrence points in a pair-wise fashion. (10 pts)
+
+
+
+```{r}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### Write an R function that removes each value of a vector, calculates the mean of the modified vector, and then reports the overall mean and standard deviation of those vector means. (5 pts)
+
+
+```{r}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### Choose a software license that is one you would feel comfortable using and defend it's use over other licenses (5 pts)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### Which of the following softwares are you likely to use in the future? (0 pts)
+
++ R
++ git
++ R markdown
++ LaTeX
++ SQL
++ parallel computing packages
++ Docker
++ the tidyverse
++ a Linux OS
++ bash shell
+
+
+
+
+
+
+
+### What did you enjoy most about the course?
+
+
+
+
+
+
+
+
+
+
+
+
+### What could be improved for future iterations (especially as it will be geared more exclusively towards undergraduates in the future)?
+
+
+
+
+
+
+
+
