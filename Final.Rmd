@@ -49,34 +49,15 @@ summary(mod2)
  ## residuals roughly centered around zero
  hist(final.mod$residuals)
 ## see how well model predicts data
-qual <-  rep(seq(4,10, by = 1), 2)
-alc <- seq(7.5, 14, by = 0.5) 
-vol <- seq(0.2, 1.5, by = 0.1)
-sulf <- seq(0.5, 2, by = 0.11)
+qual <-  seq(4,10, by = 0.25)
+alc <- seq(8, 14, by = 0.25) 
+vol <- seq(0.2, 1.425, by = 0.025)
+sulf <- seq(0.06, 3, by = 0.06)
 
-pred <- expand.grid(quality = qual, alcohol = alc, volatile.acidity = vol, sulphates = sulf)[1:1279,]
-#preds <- as.data.frame(predict(final.mod, new = pred, interval = "confidence"))
-## plot residuals
-vres <- data.frame(dat$quality, pred, residuals = dat$quality - pred)
-head(vres)
-plot(vres$quality ~ vres$residuals.quality)
+pred <- data.frame(quality = qual, alcohol = alc, volatile.acidity = vol, sulphates = sulf)
+preds <- as.data.frame(predict(final.mod, new = pred, interval = "confidence"))
+
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
