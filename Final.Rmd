@@ -68,6 +68,8 @@ dats <- sapply(baldDate[], function(x){unlist(unique(x$publish_year))})
 dats <- do.call(c, dats)
 dat.hist <- hist(dats)
 
+## Okay honestly, you did not teach us how to use APIs outside of Open Library. Not all APIs have the same documentation and none of the ones I found provide information on how to use with httr/jsonlite in R. They're all in python or some shit that doesn't make sense to us. I shouldn't be googling how to do this stuff. So, given what I was taught in this course, this is what I was able to do. 
+
 
 ```
 
@@ -152,4 +154,5 @@ What I enjoyed most about the course, was the variety of material covered and ho
 ### What could be improved for future iterations (especially as it will be geared more exclusively towards undergraduates in the future)?
 
 For future iterations of this course the number 1 (and 2) things I would recommend is to cut the discussion period and focus more on teaching the material to the students and HELP when people are struggling. 
+
 
